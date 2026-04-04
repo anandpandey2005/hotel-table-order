@@ -1,5 +1,5 @@
-import { Document, Types } from 'mongoose';
-
+import { Document, Types, PopulatedDoc } from 'mongoose';
+import { ICart } from './ICart.model.interfaces.js';
 export interface IUser extends Document {
   name: {
     first: string | null;
@@ -19,8 +19,8 @@ export interface IUser extends Document {
   };
   otp: string | null;
   otpExpiry: Date | null;
-  orders: Types.ObjectId[] | null;
-  cart: Types.ObjectId[] | null;
+  orders: PopulatedDoc<Document>[] | null;
+  cart: PopulatedDoc<ICart>[] | null;
   role: 'user' | 'admin' | 'cater' | 'chef';
   isSubscribe: boolean;
   theme: 'light' | 'dark' | 'system';

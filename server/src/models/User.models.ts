@@ -1,5 +1,6 @@
 import mongoose, { Model, Schema } from 'mongoose';
 import { IUser } from '../interfaces/Model/IUser.model.interface.js';
+
 const UserSchema: Schema<IUser> = new Schema(
   {
     name: {
@@ -20,7 +21,6 @@ const UserSchema: Schema<IUser> = new Schema(
       type: Date,
       default: null,
     },
-    userId: { type: String, default: null },
     gmail: {
       address: { type: String, required: [true, 'gmail mandatory.'] },
       isVerified: { type: Boolean, default: false },
