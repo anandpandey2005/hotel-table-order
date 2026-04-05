@@ -1,7 +1,7 @@
 import mongoose, { Model, Schema } from 'mongoose';
 import { IProduct } from '../interfaces/Model/IProduct.model.interface.js';
 
-const ProductSchema: Schema<IProduct> = new Schema(
+const ProductSchema = new Schema<IProduct>(
   {
     name: {
       type: String,
@@ -34,7 +34,10 @@ const ProductSchema: Schema<IProduct> = new Schema(
       type: Number,
       default: 0,
     },
-
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+    },
     rating: {
       type: Number,
       default: 5,

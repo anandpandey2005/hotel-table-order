@@ -1,7 +1,7 @@
 import mongoose, { Model, Schema } from 'mongoose';
 import { ICart } from '../interfaces/Model/ICart.model.interfaces.js';
 
-const CartSchema: Schema<ICart> = new Schema(
+const CartSchema = new Schema<ICart>(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -42,13 +42,11 @@ const CartSchema: Schema<ICart> = new Schema(
   { timestamps: true },
 );
 
-
 CartSchema.pre('save', async function (next: any) {
   const cart = this as any;
 
   try {
     const Product = mongoose.model('Product');
-
 
     await Promise.all(
       cart.items.map(async (item: any) => {
@@ -56,7 +54,7 @@ CartSchema.pre('save', async function (next: any) {
         if (product) {
           item.priceSnapshot = product.todayPrice;
         }
-      })
+      }),
     );
     next();
   } catch (err: any) {
@@ -68,9 +66,8 @@ CartSchema.pre('save', function (next: any) {
   const cart = this as any;
 
   cart.totalAmount = cart.items.reduce((total: number, item: any) => {
-
     const price = item.priceSnapshot || 0;
-    return total + (price * item.quantity);
+    return total + price * item.quantity;
   }, 0);
 
   next();

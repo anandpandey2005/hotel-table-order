@@ -1,4 +1,5 @@
-import { Document, Types } from 'mongoose';
+import { Document, PopulatedDoc, Types } from 'mongoose';
+import { ICategory } from './ICategory.models.interface.js';
 
 export interface IProduct extends Document {
   name: string;
@@ -7,6 +8,7 @@ export interface IProduct extends Document {
   regularPrice: number;
   todayPrice: number;
   discountPercentage: number;
+  category: PopulatedDoc<ICategory>;
   rating?: number;
   stock: number;
   underOffer?: boolean;

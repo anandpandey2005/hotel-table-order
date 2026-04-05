@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import '../models/handler.models.js';
+import '../models/index.models.js';
 
 const database = async (): Promise<void> => {
   let timeout: number = 5000;

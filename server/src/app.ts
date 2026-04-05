@@ -2,6 +2,7 @@ import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
+import rootRouter from './routes/index.routes.js';
 const app: Application = express();
 
 // GLOBAL MIDDLEWARE
@@ -36,10 +37,10 @@ app.get('/', (req: Request, res: Response) => {
   res.send('hello');
 });
 
-// ERROR HANDLING
+app.use('/api/v1', rootRouter);
 
 app.use((req: Request, res: Response) => {
-  res.status(404).json({ message: 'Route not found' });
+  res.status(404).json({ message: 'This path not exist or might be changed' });
 });
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

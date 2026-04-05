@@ -1,7 +1,7 @@
 import mongoose, { Model, Schema } from 'mongoose';
 import { IUser } from '../interfaces/Model/IUser.model.interface.js';
 
-const UserSchema: Schema<IUser> = new Schema(
+const UserSchema = new Schema<IUser>(
   {
     name: {
       first: {
