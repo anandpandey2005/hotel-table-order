@@ -6,6 +6,7 @@ const OtpSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
+        index: true,
     },
     otp: {
         type: String,

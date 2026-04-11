@@ -11,4 +11,6 @@ export interface ICart extends Document {
     priceSnapshot: number;
   }[];
   totalAmount: number;
+  createdAt: Date;
+  updatedAt: Date;
 }

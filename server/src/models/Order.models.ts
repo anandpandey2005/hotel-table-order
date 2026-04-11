@@ -5,7 +5,16 @@ const OrderSchema = new Schema<IOrder>(
   {
     tableNumber: {
       type: String,
+      default: null,
+    },
+    orderType: {
+      type: String,
+      enum: ['Dine-In', 'Takeaway'],
       required: true,
+      default: 'Dine-In'
+    },
+    tokenNumber: {
+      type: String,
       default: null,
     },
     items: [

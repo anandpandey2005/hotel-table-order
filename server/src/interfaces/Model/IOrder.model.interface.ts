@@ -20,7 +20,9 @@ export interface IPaymentDetails {
 }
 
 export interface IOrder extends Document {
-  tableNumber: string | null;
+  tableNumber?: string | null;
+  orderType: 'Dine-In' | 'Takeaway';
+  tokenNumber?: string | null;
   items: IOrderItem[];
   totalAmount: number;
   status?: 'New' | 'Cooking' | 'Served' | 'Completed' | 'Cancelled';

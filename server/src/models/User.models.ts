@@ -3,6 +3,12 @@ import { IUser } from '../interfaces/Model/IUser.model.interface.js';
 
 const UserSchema = new Schema<IUser>(
   {
+    userId: {
+
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
     fullname: {
       type: String,
       required: true,
@@ -43,8 +49,20 @@ const UserSchema = new Schema<IUser>(
     ],
     role: {
       type: String,
-      enum: ['user', 'admin', 'cater', 'chef'],
+      enum: ['customer', 'manager', 'chef', 'groundStaff'],
       required: true,
+      default: 'customer'
+    },
+    roleModel: {
+      type: String,
+      enum: ['CustomerProfile', 'ManagerProfile', 'ChefProfile', 'GroundStaffProfile'],
+      required: true,
+      default: 'CustomerProfile'
+    },
+    profile: {
+      type: mongoose.Schema.Types.ObjectId,
+      refPath: 'roleModel',
+      default: null,
     },
     isSubscribe: {
       type: Boolean,

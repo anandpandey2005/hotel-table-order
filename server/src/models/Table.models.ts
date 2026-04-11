@@ -1,6 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
 import { ITable } from '../interfaces/Model/ITable.models.interface.js';
-import { required } from 'zod/mini';
 
 const TableSchema = new Schema<ITable>(
   {
